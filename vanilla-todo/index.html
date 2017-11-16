@@ -8,7 +8,7 @@
     Hi from index.html
 
     <form id="myForm">
-      <input type="text">
+      <input type="text" />
       <button>button</button>
     </form>
 
@@ -19,29 +19,61 @@
   <script type="text/javascript">
   const myList$ = document.getElementById('myList');
 
-  const handleClick = function(e) {
+  const handleDeleteClick = function(e) {
     console.log('e', e);
     e.path[0]
     console.log('e.path[0]', JSON.stringify(e.path[0]));
     myList$.removeChild(e.path[1]);
   }
 
+  const handleEditClick = function(elem$, e) {
+    console.log('hi from handleEditClick');
+    // somehow change into a text field
 
+    // we need to be able to write text and then replace old text
+
+    console.log('elem$', elem$);
+    // create an elem
+    const myEditInput$ = document.createElement('input');
+    const button$ = document.createElement('button');
+    button$.innerText = 'update';
+    // then append
+    elem$.append(myEditInput$, button$);
+
+    button$.addEventListener('click', function(e) {
+      console.log('hi from button click')
+      const myEditValue = myEditInput$.value
+      console.log('myEditValue', myEditValue);
+      elem$.childNodes[0].remove();
+      elem$.insertAdjacentText('afterbegin', myEditValue);
+
+    })
+  }
 
 
   // console.log('myList$', myList$);
   // console.log('myList$.append', myList$.append);
     const appendTodo = function(value) {
       // store in an li
-      const myListElem = document.createElement('li');
-      myListElem.innerText = value;
+      const myListElem$ = document.createElement('li');
+      myListElem$.innerText = value;
       // append that to ul
-      const myButtonElem = document.createElement('button');
-      myButtonElem.innerText = 'delete';
-      myListElem.append(myButtonElem);
-      console.log('myListElem', myListElem);
-      myButtonElem.addEventListener('click', handleClick)
-      myList$.append(myListElem);
+      const myDeleteButton$ = document.createElement('button');
+      myDeleteButton$.innerText = 'delete';
+      myListElem$.append(myDeleteButton$);
+      myDeleteButton$.addEventListener('click', handleDeleteClick)
+
+      const myEditButton$ = document.createElement('button');
+      myEditButton$.innerText = 'edit';
+      myListElem$.append(myEditButton$);
+
+
+      myEditButton$.addEventListener('click', (e) => {
+        handleEditClick(myListElem$, e);
+      })
+
+
+      myList$.append(myListElem$);
 
     }
 
@@ -98,5 +130,6 @@
 
 
 //add a button event and then switch it with the click event
+// can change to 1.
   </script>
 </html>
