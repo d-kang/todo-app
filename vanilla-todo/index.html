@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    Hi from index.html
+
+    <form id="myForm">
+      <input type="text">
+      <button>button</button>
+    </form>
+
+    <ul id="myList">
+    </ul>
+
+  </body>
+  <script type="text/javascript">
+  const myList$ = document.getElementById('myList');
+  console.log('myList$', myList$);
+  console.log('myList$.append', myList$.append);
+    const appendTodo = function(value) {
+      // store in an li
+      const myListElem = document.createElement('li');
+      myListElem.innerText = value;
+      // append that to ul
+      console.log('myListElem', myListElem);
+      myList$.append(myListElem);
+
+    }
+
+
+    const myForm$ = document.getElementById('myForm');
+    myForm$.onsubmit = function(e) {
+      e.preventDefault();
+      const value = e.target[0].value;
+
+      if (value !== '') {
+        appendTodo(value)
+        e.target[0].value = '';
+      }
+
+    }
+
+
+
+// 6 remove the text value
+  // if we know what needs to happen at a higher level the rest is just syntax
+// if nothing is entered then we shouldnt append
+
+// now we have a basic level todo app with vanilla js
+  </script>
+</html>
