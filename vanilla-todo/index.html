@@ -23,7 +23,7 @@
     console.log('e', e);
     e.path[0]
     console.log('e.path[0]', JSON.stringify(e.path[0]));
-    myList$.removeChild(e.path[0]);
+    myList$.removeChild(e.path[1]);
   }
 
 
@@ -36,8 +36,11 @@
       const myListElem = document.createElement('li');
       myListElem.innerText = value;
       // append that to ul
+      const myButtonElem = document.createElement('button');
+      myButtonElem.innerText = 'delete';
+      myListElem.append(myButtonElem);
       console.log('myListElem', myListElem);
-      myListElem.addEventListener('click', handleClick)
+      myButtonElem.addEventListener('click', handleClick)
       myList$.append(myListElem);
 
     }
@@ -92,5 +95,8 @@
 
 // how do you delete an element
 // https://stackoverflow.com/questions/3387427/remove-element-by-id
+
+
+//add a button event and then switch it with the click event
   </script>
 </html>
