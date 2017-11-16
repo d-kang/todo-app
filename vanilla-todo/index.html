@@ -18,21 +18,44 @@
   </body>
   <script type="text/javascript">
   const myList$ = document.getElementById('myList');
-  console.log('myList$', myList$);
-  console.log('myList$.append', myList$.append);
+
+  const handleClick = function(e) {
+    console.log('e', e);
+    e.path[0]
+    console.log('e.path[0]', JSON.stringify(e.path[0]));
+    myList$.removeChild(e.path[0]);
+  }
+
+
+
+
+  // console.log('myList$', myList$);
+  // console.log('myList$.append', myList$.append);
     const appendTodo = function(value) {
       // store in an li
       const myListElem = document.createElement('li');
       myListElem.innerText = value;
       // append that to ul
       console.log('myListElem', myListElem);
+      myListElem.addEventListener('click', handleClick)
       myList$.append(myListElem);
 
     }
 
 
     const myForm$ = document.getElementById('myForm');
-    myForm$.onsubmit = function(e) {
+    // myForm$.onsubmit = function(e) {
+    //   e.preventDefault();
+    //   const value = e.target[0].value;
+    //
+    //   if (value !== '') {
+    //     appendTodo(value)
+    //     e.target[0].value = '';
+    //   }
+    //
+    // }
+
+    const handleSubmit = function(e) {
       e.preventDefault();
       const value = e.target[0].value;
 
@@ -44,11 +67,30 @@
     }
 
 
+    myForm$.addEventListener('submit', handleSubmit);
 
+// test as you go
+// console log all the things!
+  // its important to have identifiers
+  // ill keep the console logs in for as long as i need them then clear them out if its no longer needed
+// helper function
 // 6 remove the text value
   // if we know what needs to happen at a higher level the rest is just syntax
 // if nothing is entered then we shouldnt append
 
 // now we have a basic level todo app with vanilla js
+
+// maybe delete stuff if there is time?
+// maybe add in a ui framework like bootstrap?
+
+// refactor to use add event listener
+// move function out into its own thing
+// modularize code into own file
+
+
+// so we can store it in an array instead of appending it to the ul
+
+// how do you delete an element
+// https://stackoverflow.com/questions/3387427/remove-element-by-id
   </script>
 </html>
