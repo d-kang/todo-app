@@ -3,7 +3,7 @@
  * @Date:   11.16.2017 06:11pm
  * @Filename: app.component.ts
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 06:23pm
+ * @Last modified time: 11.16.2017 07:04pm
  */
 
 import { Component } from '@angular/core';
@@ -15,4 +15,10 @@ import { Component } from '@angular/core';
 })
 export class SomethingComponent {
   something = 'something is rendering!'
+  boo = function(e) {
+    console.log('e', e);
+    console.log('hi')
+  }
+
+  model = {}
 }

@@ -2,4 +2,12 @@
   <h1>
     Welcome to {{something}}!
   </h1>
+  <form (ngSubmit)="boo(model.name)">
+    <input
+      type="text"
+      [(ngModel)]="model.name"
+      name="first"
+    >
+    <button>Click</button>
+  </form>
 </div>
